@@ -20,7 +20,8 @@ import {
   Calendar,
   MapPin,
   Filter,
-  Settings
+  Settings,
+  Ghost
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -96,7 +97,7 @@ export default function Dashboard({ user }: DashboardProps) {
   const fetchProfile = async () => {
     try {
       const { data, error } = await supabase
-        .from('profiles_2025_11_16_17_00')
+        .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
@@ -112,10 +113,10 @@ export default function Dashboard({ user }: DashboardProps) {
     try {
       setLoading(true);
       const { data, error } = await supabase
-        .from('stories_2025_11_16_17_00')
+        .from('stories')
         .select(`
           *,
-          profiles_2025_11_16_17_00 (
+          profiles (
             username,
             avatar_url,
             level
@@ -420,7 +421,6 @@ export default function Dashboard({ user }: DashboardProps) {
             {filteredStories.length === 0 && !loading && (
               <Card className="supernatural-card">
                 <CardContent className="text-center py-12">
-                  <Ghost className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                   <h3 className="text-lg font-semibold mb-2">Nenhum relato encontrado</h3>
                   <p className="text-muted-foreground mb-4">
                     {searchTerm || categoryFilter !== 'todos' 
