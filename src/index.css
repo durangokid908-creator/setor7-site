@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Supernatural Dark Theme Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 271 81% 56%; /* Purple mystical */
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 271 91% 66%;
+
+    --secondary: 217 19% 27%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 142 76% 36%; /* Eerie green */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 271 81% 56%;
+
+    /* Supernatural specific colors */
+    --supernatural-purple: 271 81% 56%;
+    --supernatural-green: 142 76% 36%;
+    --supernatural-orange: 25 95% 53%;
+    --supernatural-dark: 240 10% 3.9%;
+    --supernatural-darker: 240 20% 1%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--supernatural-purple)), hsl(var(--supernatural-green)));
+    --gradient-dark: linear-gradient(180deg, hsl(var(--supernatural-dark)), hsl(var(--supernatural-darker)));
+    --gradient-glow: radial-gradient(circle, hsl(var(--supernatural-purple) / 0.3), transparent);
+    
+    /* Shadows */
+    --shadow-supernatural: 0 10px 30px -10px hsl(var(--supernatural-purple) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--supernatural-green) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode inherits the supernatural theme */
+    --background: 240 20% 1%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 20% 1%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 20% 1%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 271 91% 66%;
+    --primary-foreground: 240 20% 1%;
+
+    --secondary: 217 19% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 217 19% 15%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 142 86% 46%;
+    --accent-foreground: 240 20% 1%;
+
+    --destructive: 0 72.8% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 19% 15%;
+    --input: 217 19% 15%;
+    --ring: 271 91% 66%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: hsl(var(--background));
+    min-height: 100vh;
+  }
+
+  /* Supernatural UI Components */
+  .supernatural-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .supernatural-card {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--shadow-supernatural);
+  }
+
+  .supernatural-button {
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+  }
+
+  .supernatural-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-supernatural);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--supernatural-purple));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--supernatural-green));
+  }
+}
